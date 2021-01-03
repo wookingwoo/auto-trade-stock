@@ -14,3 +14,11 @@
 윈도우 작업을 자동화하는 파이썬 라이브러리
 
 pip install pywinauto
+
+
+
+### slacker
+
+슬랙 챗봇을 사용하기 위한 라이브러리
+
+pip install slacker
