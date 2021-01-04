@@ -22,3 +22,8 @@ pip install pywinauto
 슬랙 챗봇을 사용하기 위한 라이브러리
 
 pip install slacker
+
+
+### pandas
+
+pip install pandas

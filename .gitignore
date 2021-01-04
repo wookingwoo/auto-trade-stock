@@ -5,3 +5,6 @@ __pycache__/
 
 # Data files
 data/
+
+
+auto_trade.py
