@@ -6,9 +6,13 @@ f = open("data/slackToken.txt", 'r')
 slackToken = f.readline()
 f.close()
 
-now_time = datetime.today().strftime("%Y/%m/%d %H:%M:%S")  # YYYY/mm/dd HH:MM:SS 형태의 시간 출력
-
 slack = Slacker(slackToken)
 
-# Send a message to #general channel
-slack.chat.post_message('#stock-chatbot', now_time+ '컴퓨터를 켰습니다.')
+# Send a message to #stock-chatbot channel
+message = "컴퓨터를 켰습니다!"
+
+print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S]'), message)
+
+
+strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
+slack.chat.post_message('#stock-chatbot', strbuf)
