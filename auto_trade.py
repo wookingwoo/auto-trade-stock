@@ -17,16 +17,16 @@ slack = Slacker(slackToken)
 
 def dbgout(message):
     """인자로 받은 문자열을 파이썬 셸과 슬랙으로 동시에 출력한다."""
-    print(datetime.now().strftime('[%m/%d %H:%M:%S]'), message)
-    strbuf = datetime.now().strftime('[%m/%d %H:%M:%S] ') + message
+    print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message)
+    strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
     slack.chat.post_message('#stock-chatbot', strbuf)
     write_all_log(strbuf) # 로그파일 생성
 
 def printlog(message, *args):
     """인자로 받은 문자열을 파이썬 셸에 출력한다."""
-    print(datetime.now().strftime('[%m/%d %H:%M:%S]'), message, *args)
+    print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message, *args)
     
-    strbuf = datetime.now().strftime('[%m/%d %H:%M:%S]') + str(message)
+    strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + str(message)
     for arg in args:
         strbuf += str(arg)
     write_all_log(strbuf) # 로그파일 생성
