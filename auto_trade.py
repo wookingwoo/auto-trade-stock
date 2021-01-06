@@ -6,6 +6,7 @@ from slacker import Slacker
 import time, calendar
 
 from data.stock_code import *
+from write_log import *
 
 
 f = open("data/slackToken.txt", 'r')
@@ -19,10 +20,18 @@ def dbgout(message):
     print(datetime.now().strftime('[%m/%d %H:%M:%S]'), message)
     strbuf = datetime.now().strftime('[%m/%d %H:%M:%S] ') + message
     slack.chat.post_message('#stock-chatbot', strbuf)
+    write_all_log(strbuf) # 로그파일 생성
 
 def printlog(message, *args):
     """인자로 받은 문자열을 파이썬 셸에 출력한다."""
     print(datetime.now().strftime('[%m/%d %H:%M:%S]'), message, *args)
+    
+    strbuf = datetime.now().strftime('[%m/%d %H:%M:%S]') + str(message)
+    for arg in args:
+        strbuf += str(arg)
+    write_all_log(strbuf) # 로그파일 생성
+    
+
  
 # 크레온 플러스 공통 OBJECT
 cpCodeMgr = win32com.client.Dispatch('CpUtil.CpStockCode')
@@ -144,6 +153,7 @@ def get_target_price(code):
         # dbgout("range of fluctuation (변동폭): " + str(FLUCTUATION))
 
         target_price = today_open + (lastday_high - lastday_low) * FLUCTUATION
+
 
         # dbgout("target_price: " + str(target_price))
 
