@@ -9,7 +9,7 @@ f.close()
 slack = Slacker(slackToken)
 
 # Send a message to #stock-chatbot channel
-message = "컴퓨터를 켰습니다!"
+message = "주식 자동화 거래 컴퓨터에 원격 접속 했습니다!"
 
 print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S]'), message)
 
