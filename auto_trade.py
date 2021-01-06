@@ -139,7 +139,14 @@ def get_target_price(code):
             today_open = lastday[3]
         lastday_high = lastday[1]
         lastday_low = lastday[2]
-        target_price = today_open + (lastday_high - lastday_low) * 0.5
+        
+        global FLUCTUATION # 변동폭(range of fluctuation)
+        # dbgout("range of fluctuation (변동폭): " + str(FLUCTUATION))
+
+        target_price = today_open + (lastday_high - lastday_low) * FLUCTUATION
+
+        # dbgout("target_price: " + str(target_price))
+
         return target_price
     except Exception as ex:
         dbgout("`get_target_price() -> exception! " + str(ex) + "`")
@@ -251,19 +258,31 @@ def sell_all():
 
 if __name__ == '__main__': 
     try:
-        symbol_list = stock_code
-        print("종목:", stock_code)
+        symbol_list = wjh_symbol_list
+        print("종목:", wjh_symbol_list)
         bought_list = []     # 매수 완료된 종목 리스트
-        target_buy_count = 4 # 매수할 종목 수
-        buy_percent = 0.25
+        target_buy_count = wjh_target_buy_count # 매수할 종목 수
+        buy_percent = wjh_buy_percent
+        FLUCTUATION = wjh_FLUCTUATION # 변동폭(range of fluctuation)
         printlog('check_creon_system() :', check_creon_system())  # 크레온 접속 점검
         stocks = get_stock_balance('ALL')      # 보유한 모든 종목 조회
         total_cash = int(get_current_cash())   # 100% 증거금 주문 가능 금액 조회
         buy_amount = total_cash * buy_percent  # 종목별 주문 금액 계산
-        printlog('100% 증거금 주문 가능 금액 :', total_cash)
-        printlog('종목별 주문 비율 :', buy_percent)
-        printlog('종목별 주문 금액 :', buy_amount)
+        # printlog('100% 증거금 주문 가능 금액 :', total_cash)
+        # printlog('종목별 주문 비율 :', buy_percent)
+        # printlog('종목별 주문 금액 :', buy_amount)
         printlog('시작 시간 :', datetime.now().strftime('%m/%d %H:%M:%S'))
+
+
+        dbgout('<<auto_trade.py>>를 시작합니다!:')
+        dbgout('100% 증거금 주문 가능 금액 :' + str(total_cash))
+        dbgout('종목별 주문 비율 :' + str(buy_percent))
+        dbgout('종목별 주문 금액 :' + str(buy_amount))
+        dbgout("range of fluctuation (변동폭): " + str(FLUCTUATION))
+
+
+
+
         soldout = False
 
         while True:
