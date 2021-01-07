@@ -44,6 +44,9 @@ The instance will now run the items in the Startup folder in Windows.
 If this is not configured on the instance, the login will actually happen when you remote desktop into the instance.
 
 
+참고자료: https://stackoverflow.com/questions/21830597/ec2-windows-instance-not-starting-batch-file-from-startup-folder-after-restart
+
+
 주의: especially on a Cloud machine - if you ever poke an accidentally-imprecise hole in your Security Group, expect to be compromised with rapidity.
 
 윈도우 클라우드 서버를 자동로그인 시키는것은 보안적으로 좋지 않은 일이지만 다른 방법을 찾지 못했다ㅠㅠ
