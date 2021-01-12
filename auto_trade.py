@@ -304,6 +304,7 @@ if __name__ == '__main__':
             today = datetime.today().weekday()
             if today == 5 or today == 6:  # 토요일이나 일요일이면 자동 종료
                 printlog('Today is', 'Saturday.' if today == 5 else 'Sunday.')
+                dbgout('주말이기 때문에 프로그램을 종료합니다.')
                 sys.exit(0)
             if t_9 < t_now < t_start and soldout == False:
                 soldout = True
