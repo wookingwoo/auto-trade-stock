@@ -2,7 +2,7 @@ from slacker import Slacker
 from datetime import datetime
 
 def SendMSG(msg):
-    f = open("data/slackToken.txt", 'r')
+    f = open("../data/slackToken.txt", 'r')
     slackToken = f.readline()
     f.close()
 
