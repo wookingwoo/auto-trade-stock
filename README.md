@@ -1,4 +1,4 @@
-# stock-auto
+# auto-trade-stock
 
 윈도우 환경에서만 크레온API 사용 가능
 
