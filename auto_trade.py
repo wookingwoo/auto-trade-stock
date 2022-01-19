@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime
 from slacker import Slacker
 import time, calendar
+import requests
 
 from data.stock_code import *
 from write_log import *
@@ -12,14 +13,26 @@ f = open("data/slackToken.txt", 'r')
 slackToken = f.readline()
 f.close()
 
-slack = Slacker(slackToken)
+
+# slack = Slacker(slackToken)
+#
+#
+# def dbgout(message):
+#     """인자로 받은 문자열을 파이썬 셸과 슬랙으로 동시에 출력한다."""
+#     print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message)
+#     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
+#     slack.chat.post_message('#stock-chatbot', strbuf)
+#     write_all_log(strbuf)  # 로그파일 생성
 
 
 def dbgout(message):
-    """인자로 받은 문자열을 파이썬 셸과 슬랙으로 동시에 출력한다."""
     print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message)
     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
-    slack.chat.post_message('#stock-chatbot', strbuf)
+
+    requests.post("https://slack.com/api/chat.postMessage",
+                  headers={"Authorization": "Bearer " + slackToken},
+                  data={"channel": "#stock-chatbot", "text": strbuf})
+
     write_all_log(strbuf)  # 로그파일 생성
 
 
