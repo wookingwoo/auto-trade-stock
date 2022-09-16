@@ -20,7 +20,10 @@ pip install -r requirements.txt
 
 ## Windows server setting (AWS EC2)
 
-### automatically log in
+### Server Specs
+- t3a.micro
+
+### Automatically Log In
 
 How to automatically log in after the instance is restarted:
 
