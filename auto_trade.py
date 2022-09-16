@@ -212,11 +212,11 @@ def buy_etf(code):
         ma5_price = get_movingaverage(code, 5)  # 5일 이동평균가
         ma10_price = get_movingaverage(code, 10)  # 10일 이동평균가
         buy_qty = 0  # 매수할 수량 초기화
-        if ask_price > 0:  # 매수호가가 존재하면   
+        if ask_price > 0:  # 매수호가가 존재하면
             buy_qty = buy_amount // ask_price
         stock_name, stock_qty = get_stock_balance(code)  # 종목명과 보유수량 조회
         # printlog('bought_list:', bought_list, 'len(bought_list):',
-        #    len(bought_list), 'target_buy_count:', target_buy_count)     
+        #    len(bought_list), 'target_buy_count:', target_buy_count)
         if current_price > target_price and current_price > ma5_price \
                 and current_price > ma10_price:
             printlog(stock_name + '(' + str(code) + ') ' + str(buy_qty) +
@@ -258,7 +258,7 @@ def sell_all():
     try:
         cpTradeUtil.TradeInit()
         acc = cpTradeUtil.AccountNumber[0]  # 계좌번호
-        accFlag = cpTradeUtil.GoodsList(acc, 1)  # -1:전체, 1:주식, 2:선물/옵션   
+        accFlag = cpTradeUtil.GoodsList(acc, 1)  # -1:전체, 1:주식, 2:선물/옵션
         while True:
             stocks = get_stock_balance('ALL')
             total_qty = 0
@@ -274,7 +274,7 @@ def sell_all():
                     cpOrder.SetInputValue(3, s['code'])  # 종목코드
                     cpOrder.SetInputValue(4, s['qty'])  # 매도수량
                     cpOrder.SetInputValue(7, "1")  # 조건 0:기본, 1:IOC, 2:FOK
-                    cpOrder.SetInputValue(8, "12")  # 호가 12:최유리, 13:최우선 
+                    cpOrder.SetInputValue(8, "12")  # 호가 12:최유리, 13:최우선
                     # 최유리 IOC 매도 주문 요청
                     ret = cpOrder.BlockRequest()
                     printlog('최유리 IOC 매도', s['code'], s['name'], s['qty'],
