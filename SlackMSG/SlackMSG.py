@@ -1,18 +1,19 @@
-from slacker import Slacker
+import requests
 from datetime import datetime
 
+
+# Send a message to #stock-chatbot channel
 def SendMSG(msg):
     f = open("../data/slackToken.txt", 'r')
     slackToken = f.readline()
     f.close()
 
-    slack = Slacker(slackToken)
-
-    # Send a message to #stock-chatbot channel
     message = msg
 
-    print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S]'), message)
-
-
     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
-    slack.chat.post_message('#stock-chatbot', strbuf)
+
+    print(strbuf)
+
+    requests.post("https://slack.com/api/chat.postMessage",
+                  headers={"Authorization": "Bearer " + slackToken},
+                  data={"channel": "#stock-chatbot", "text": strbuf})
