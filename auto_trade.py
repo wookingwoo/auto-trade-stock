@@ -329,10 +329,10 @@ if __name__ == '__main__':
                     time.sleep(5)
             if t_sell < t_now < t_exit:  # PM 03:15 ~ PM 03:20 : 일괄 매도
                 if sell_all() == True:
-                    dbgout('`sell_all() returned True -> self-destructed!`')
+                    dbgout('`일괄 매도를 완료했습니다. 프로그램을 종료합니다.`')
                     sys.exit(0)
             if t_exit < t_now:  # PM 03:20 ~ :프로그램 종료
-                dbgout('`self-destructed!`')
+                dbgout('`매매 거래 시간이 아니므로 프로그램을 종료합니다.`')
                 sys.exit(0)
             time.sleep(3)
     except Exception as ex:
