@@ -4,30 +4,19 @@
 
 - OS: Windows 10
 - Python version: 3.8.6 (32bit)
-- 크레온API는 Window와 파이썬 32bit 버전에서만 사용 가능
+
+*크레온API는 Window와 파이썬 32bit 버전에서만 사용 가능*
+
+## Install required dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Run files
 
 - auto_connect.py
 - auto_trade.py
-
-## python 라이브러리 설치
-
-### pywinauto
-
-윈도우 작업을 자동화하는 파이썬 라이브러리
-
-pip install pywinauto
-
-### slacker
-
-슬랙 챗봇을 사용하기 위한 라이브러리
-
-pip install slacker
-
-### pandas
-
-pip install pandas
 
 ## Windows server setting (AWS EC2)
 
@@ -71,4 +60,3 @@ check_creon_system() : connect to server -> FAILED
 check_creon_system() :False
 
 혹시 더 좋은 다른 방법이 있다면 공유 부탁드립니다.
-
