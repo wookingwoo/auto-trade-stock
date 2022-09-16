@@ -28,8 +28,8 @@ def dbgout(message):
     write_all_log(strbuf)  # 로그파일 생성
 
 
+# 인자로 받은 문자열을 파이썬 셸에 출력
 def printlog(message, *args):
-    """인자로 받은 문자열을 파이썬 셸에 출력한다."""
     print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message, *args)
 
     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + str(message)
@@ -328,7 +328,7 @@ if __name__ == '__main__':
                     get_stock_balance('ALL')
                     time.sleep(5)
             if t_sell < t_now < t_exit:  # PM 03:15 ~ PM 03:20 : 일괄 매도
-                if sell_all() == True:
+                if sell_all():
                     dbgout('`일괄 매도를 완료했습니다. 프로그램을 종료합니다.`')
                     sys.exit(0)
             if t_exit < t_now:  # PM 03:20 ~ :프로그램 종료
