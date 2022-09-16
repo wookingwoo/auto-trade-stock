@@ -1,10 +1,12 @@
-import os, sys, ctypes
+import os
+import sys
 import win32com.client
-import pandas as pd
+import calendar
 from datetime import datetime
-from slacker import Slacker
-import time, calendar
+import time
 import requests
+import ctypes
+import pandas as pd
 
 from data.stock_code import *
 from write_log import *
@@ -14,17 +16,7 @@ slackToken = f.readline()
 f.close()
 
 
-# slack = Slacker(slackToken)
-#
-#
-# def dbgout(message):
-#     """인자로 받은 문자열을 파이썬 셸과 슬랙으로 동시에 출력한다."""
-#     print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message)
-#     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
-#     slack.chat.post_message('#stock-chatbot', strbuf)
-#     write_all_log(strbuf)  # 로그파일 생성
-
-
+# 인자로 받은 문자열을 파이썬 셀에 출력하고 슬랙으로 전송
 def dbgout(message):
     print(datetime.now().strftime('[%Y/%m/%d %H:%M:%S] '), message)
     strbuf = datetime.now().strftime('[%Y/%m/%d %H:%M:%S] ') + message
