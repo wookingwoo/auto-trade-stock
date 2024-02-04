@@ -7,7 +7,7 @@
 
 *크레온API는 Window와 파이썬 32bit 버전에서만 사용 가능*
 
-## Server Spec
+## Minimum Server Spec
 
 ### AWS EC2
 
