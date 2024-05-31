@@ -1,0 +1,5 @@
+.idea/
+config.yaml
+
+.env.prd
+.env.dev
