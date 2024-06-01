@@ -1,5 +1,5 @@
 .idea/
 config.yaml
 
-.env.prd
+.env.prod
 .env.dev
